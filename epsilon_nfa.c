@@ -4,16 +4,16 @@
 #define MAX_STATES 20
 #define MAX_SYMBOLS 10
 
-/* المتغيرات العامة */
+/*general variables */
 int n_states;
 int n_symbols;
 
-char symbols[MAX_SYMBOLS];   // الأبجدية
+char symbols[MAX_SYMBOLS];   //symbols
 int start_state;
 
-int is_final[MAX_STATES];    // الحالات النهائية القديمة
+int is_final[MAX_STATES];    // old final states
 int transitions[MAX_STATES][MAX_SYMBOLS + 1][MAX_STATES];
-// العمود الأخير خاص بـ ε
+// last column of ε
 
 int new_transitions[MAX_STATES][MAX_SYMBOLS][MAX_STATES];
 int new_final[MAX_STATES];
@@ -70,7 +70,7 @@ void readNFA() {
         if (sym == 'e')
             index = n_symbols;   // ε
         else
-            index = sym - 'a';  // نفترض الرموز a,b,c...
+            index = sym - 'a';  // suppose : a,b,c...
 
         transitions[from][index][to] = 1;
     }
